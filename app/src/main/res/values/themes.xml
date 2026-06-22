@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.BananaBreach" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/banana_yellow</item>
+        <item name="colorPrimaryVariant">@color/banana_yellow_dark</item>
+        <item name="colorOnPrimary">@color/banana_black</item>
+        <item name="colorSecondary">@color/banana_green</item>
+        <item name="colorOnSecondary">@color/banana_white</item>
+        <item name="android:statusBarColor">@color/banana_yellow_dark</item>
+    </style>
+
+    <style name="Theme.BananaBreach.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorPrimary">@color/banana_yellow</item>
+        <item name="colorOnPrimary">@color/banana_black</item>
+    </style>
+</resources>

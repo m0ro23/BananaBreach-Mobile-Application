@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="banana_yellow">#FFC107</color>
+    <color name="banana_yellow_dark">#FFA000</color>
+    <color name="banana_green">#2E7D32</color>
+    <color name="banana_black">#1B1B1B</color>
+    <color name="banana_white">#FFFFFF</color>
+    <color name="banana_gray">#9E9E9E</color>
+    <color name="banana_error">#D32F2F</color>
+    <color name="banana_success">#388E3C</color>
+</resources>

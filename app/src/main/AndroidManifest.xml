@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Network permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Intentionally over-broad permission — see docs/VULNERABILITIES.md -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BananaBreach"
+        android:debuggable="true"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <!-- Main / splash entry point -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Auth -->
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.auth.ForgotPasswordActivity"
+            android:exported="false" />
+
+        <!-- Dashboard -->
+        <activity
+            android:name=".ui.dashboard.DashboardActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.dashboard.TransactionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.dashboard.PaymentActivity"
+            android:exported="false" />
+
+        <!-- Profile -->
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.profile.EditProfileActivity"
+            android:exported="false" />
+
+        <!-- Settings -->
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.settings.SecuritySettingsActivity"
+            android:exported="false" />
+
+        <!-- Admin panel reachable via broken client-side access control — see docs/VULNERABILITIES.md -->
+        <activity
+            android:name=".ui.admin.AdminPanelActivity"
+            android:exported="false"
+            android:label="System Administration"
+            android:theme="@style/Theme.BananaBreach.Dialog" />
+
+        <!-- Exported receiver — intentionally over-exposed component -->
+        <receiver
+            android:name=".receivers.DeviceAdminReceiver"
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Exported service — intentionally over-exposed component -->
+        <service
+            android:name=".services.BackgroundSyncService"
+            android:exported="true" />
+
+        <!-- WebView entry point — over-permissive config, see docs/VULNERABILITIES.md -->
+        <activity
+            android:name=".ui.webview.WebViewActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="bananabreach" />
+                <data android:host="webview" />
+            </intent-filter>
+        </activity>
+
+        <!-- Deep link entry point — weak validation, see docs/VULNERABILITIES.md -->
+        <activity
+            android:name=".ui.deeplink.DeepLinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="bananabreach" />
+                <data android:host="deeplink" />
+                <data android:pathPattern="/user/*" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Public test Ad Unit ID (Google sample), not a real production key -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+    </application>
+
+</manifest>

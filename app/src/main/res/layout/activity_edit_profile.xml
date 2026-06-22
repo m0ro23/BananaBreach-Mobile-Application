@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edit_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Full name" />
+
+    <EditText
+        android:id="@+id/edit_email_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edit_phone_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Phone number"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/edit_save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Save Changes" />
+
+</LinearLayout>

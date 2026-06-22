@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BananaBreach</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="remember_me">Remember me</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="transactions">Transactions</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="balance">Balance</string>
+    <string name="account_number">Account Number</string>
+    <string name="admin_panel">Admin Panel</string>
+
+    <!-- Intentional: cleartext API endpoint shipped in resources -->
+    <string name="api_base_url">http://api.bananabreach.com</string>
+
+    <!-- Intentional: hardcoded admin credentials — see docs/VULNERABILITIES.md -->
+    <string name="dev_admin_email">admin@bananabreach.com</string>
+    <string name="dev_admin_password">Admin123!</string>
+
+    <!-- Intentional: debug secrets left in shipped resources -->
+    <string name="debug_api_key">BB_DEBUG_KEY_2024</string>
+    <string name="encryption_salt">banana_salt_123</string>
+</resources>
